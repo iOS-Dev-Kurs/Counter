@@ -9,17 +9,35 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var count: Int = 0 {
+        didSet {
+            self.updateLabel()
+        }
+    }
 
+    @IBOutlet weak var countLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.updateLabel()
+    }
+    
+    @IBAction func minusButtonPressed(sender: UIButton) {
+        count--
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func plusButtonPressed(sender: UIButton) {
+        count++
     }
-
-
+    
+    @IBAction func resetButtonPressed(sender: UIButton) {
+        count = 0
+    }
+    
+    func updateLabel() {
+        self.countLabel.text = String(count)
+    }
+    
 }
 
